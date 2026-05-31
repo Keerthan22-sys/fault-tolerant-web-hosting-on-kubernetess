@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kubernetes-deployment
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      project: kubernetes-project
+  template:
+    metadata:
+      labels:
+        project: kubernetes-project
+    spec: 
+      restartPolicy: Always
+      containers:
+      - name: kubernetes-pod
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 31111
+        image: keerthangowda09907/sample
